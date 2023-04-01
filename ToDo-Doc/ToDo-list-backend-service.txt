@@ -1,0 +1,72 @@
+# ToDo List Backend Service
+
+## Api Documents:-
+
+- **Get** `/task` 📑
+ "Get all the list of the tasks"
+
+`````JSON,
+[
+	{
+		"id": 1,
+		"title": "here I am going to learn about something important",
+		"due_date": 20122022,
+		"completed": false
+	},
+	{
+		"id": 2,
+		"title": "Let's learn about backend",
+		"due_date": 20122023,
+		"completed": true
+	},
+	{
+		"id": 3,
+		"title": "Hey there! hope doing well",
+		"due_date": 23122022,
+		"completed": false
+	}
+]
+
+```
+
+**Get** `/tasks/{id}`
+- get task by id
+
+```json
+[
+	{
+
+		"id": 3,
+		"title": "Hey there! hope doing well",
+		"due_date": 23122022,
+		"completed": false,
+		"notes": [
+		
+		]
+	}
+]
+````
+
+| query param | definition|
+|-------------| ----------|
+|`notes`      | if true, task has notes else not |
+
+examples - 
+`/tasks/3?notes=true` - fetch detaisl of task id = 3 and including it's notes
+
+````json
+[
+	{},
+	{}
+]
+````
+
+### References 
+
+If 📄 is used, it means the endpoint supports `?size=10&page=2` type of pagination properties 
+
+## Entities 
+
+![image](https://user-images.githubusercontent.com/1327050/180837289-72d49220-f104-45dd-80c6-e30378ab62a6.png)	
+	
+ 
