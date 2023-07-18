@@ -25,6 +25,16 @@ public class TasksService {
 //		TaskEntity task = tasksRepository.findById(taskId).orElseThrow(()-> new IllegalArgumentException("user not found  with id " + taskId));
 		return mapper.map(tasksRepository.findById(taskId), TaskDto.class);
 	}
+
+	public TaskDto createNewTask(TaskDto taskDto) {
+		//convert dto to entity
+		TaskEntity taskEntity = mapper.map(taskDto, TaskEntity.class);
+		//save entity to DB
+		tasksRepository.save(taskEntity);
+		//convert entity to dto
+		TaskDto tasDto = mapper.map(taskEntity, TaskDto.class);
+		return tasDto;
+	}
 	
 	
 	
