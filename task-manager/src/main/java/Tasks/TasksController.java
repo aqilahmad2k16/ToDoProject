@@ -51,7 +51,7 @@ public class TasksController {
 	 */
 	
 	@PatchMapping("/{taskID}")
-	public ResponseEntity<TaskDto> updateTaskById(@PathVariable Long taskId){
-		return null;
+	public ResponseEntity<TaskDto> updateTaskById(@RequestBody TaskDto taskDto, @PathVariable Long taskId){
+		return ResponseEntity.ok(tasksService.updateTaskById(taskDto,taskId));
 	}
 }

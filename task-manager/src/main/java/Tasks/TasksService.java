@@ -35,6 +35,14 @@ public class TasksService {
 		TaskDto tasDto = mapper.map(taskEntity, TaskDto.class);
 		return tasDto;
 	}
+
+	public TaskDto updateTaskById(TaskDto taskDto, Long taskId) {
+		TaskEntity entity = tasksRepository.findById(taskId).get();
+		entity.setName(taskDto.getName());
+		entity.setDone(taskDto.getDone());
+		entity.setDueDate(taskDto.getDueDate());
+		return mapper.map(tasksRepository.save(entity), TaskDto.class);
+	}
 	
 	
 	
