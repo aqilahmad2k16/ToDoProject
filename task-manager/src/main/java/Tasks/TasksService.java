@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,6 +43,17 @@ public class TasksService {
 		entity.setDone(taskDto.getDone());
 		entity.setDueDate(taskDto.getDueDate());
 		return mapper.map(tasksRepository.save(entity), TaskDto.class);
+	}
+
+	public TaskDto updateTaskCompletely(TaskDto taskDto, Long taskId) {
+		tasksRepository.deleteById(taskId);
+		
+		return mapper.map(tasksRepository.save(mapper.map(taskDto, TaskEntity.class)), TaskDto.class);
+	}
+
+	public String removeTaskById(Long taskId) {
+		tasksRepository.deleteById(taskId);
+		return "task with id: " + taskId + "has successfully deleted from history";
 	}
 	
 	

@@ -19,29 +19,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class TaskEntity {
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public boolean isDone() {
-		return done;
-	}
-
-	public void setDone(boolean done) {
-		this.done = done;
-	}
 
 	@Column(name = "name", nullable = false)
 	String name;
